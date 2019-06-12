@@ -15,4 +15,10 @@ application Flask code is held within `application.py` and all the HTML is
 stored in `templates/`.
 
 * **Survey**
-TODO
+`survey/` contains a web application also built using Flask, which prompts 
+the user to fill out a short survey, stores the data in a .csv file and 
+makes the data viewable on a separate page, `sheets.html`, via a JavaScript 
+DataTable. The form will not allow users to leave inputs blank, and will 
+throw up error messages if the sheet is viewed before any submissions have 
+been recorded, or if JS has been disabled and the user still fails to 
+fully complete the form.

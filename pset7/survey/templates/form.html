@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Sport Survey</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form action="/form" method="post" class="needs-validation" novalidate>
+        <div>
+            <input class="form-control" type="text" placeholder="Enter name" name="name" required>
+            <div class="invalid-feedback">
+              Please enter your name.
+            </div>
+        </div>
+        <br>
+        <strong>Which sport do you prefer?</strong>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sport" id="exampleRadios1" value="Baseball" checked>
+          <label class="form-check-label" for="exampleRadios1">
+            Baseball
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="sport" id="exampleRadios2" value="Basketball">
+          <label class="form-check-label" for="exampleRadios2">
+            Basketball
+          </label>
+        </div>
+        <br>
+        <strong>How often do you watch MLB/NBA games?</strong>
+        <div>
+            <select class="custom-select" name="frequency" required>
+              <option value="" disabled="disabled" selected="selected">Select option</option>
+              <option value="Never">Never</option>
+              <option value="Monthly">Once a month or less</option>
+              <option value="Weekly">Roughly once a week</option>
+              <option value="Daily">Roughly every day</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select an option.
+            </div>
+        </div>
+        <br>
+        <br>
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+    <script>
+
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+
+    </script>
+
+{% endblock %}
