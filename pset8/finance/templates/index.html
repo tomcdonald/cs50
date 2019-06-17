@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <h2>Portfolio Overview</h2>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Stock</th>
+                <th scope="col">Shares</th>
+                <th scope="col">Current Price</th>
+                <th scope="col">Total Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in stocks %}
+            <tr>
+                <th scope="row">{{ stock['symbol'] }}</th>
+                <td>{{ stock['num_stocks'] }}</td>
+                <td>{{ stock['price'] | usd }}</td>
+                <td>{{ stock['value'] | usd }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <h6><strong>Account balance:</strong> {{ balance | usd }}</h6>
+    <h6><strong>Total portfolio value (cash & stocks):</strong> {{ total_value | usd }}</h6>
+{% endblock %}
